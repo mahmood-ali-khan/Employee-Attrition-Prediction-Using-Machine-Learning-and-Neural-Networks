@@ -86,3 +86,18 @@ Neural Network also performed exceptionally well, slightly below Random Forest.
 Tree-based ensemble methods, particularly Random Forest, proved most effective for predicting employee attrition in this dataset. While Logistic Regression provided interpretability, its predictive power was limited. Neural Networks offered strong performance but required careful scaling and tuning.
 
 This project demonstrates how machine learning can be effectively applied to HR analytics to support data-driven decision-making.
+
+# Technologies Used
+
+Python
+
+Pandas, NumPy
+
+Scikit-learn
+
+Matplotlib
+
+# Author
+Mahmood Ali Khan
+Master’s in Artificial Intelligence
+Machine Learning & Data Analytics Enthusiast
