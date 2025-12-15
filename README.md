@@ -1,17 +1,23 @@
-# Employee-Attrition-Prediction-Using-Machine-Learning-and-Neural-Networks
+# Employee Attrition Prediction Using Machine Learning
 # Project Overview
 
-This project focuses on predicting employee attrition—whether an employee will leave or stay—using machine learning techniques. The dataset contains employee-related attributes such as satisfaction level, performance evaluation, workload, tenure, promotion history, department, and salary.
+Employee attrition is a critical challenge for organizations, impacting productivity, operational continuity, and recruitment costs. This project applies multiple machine learning algorithms to predict whether an employee will leave or stay at a company based on historical HR data.
 
-The objective is to build and compare multiple machine learning models to identify the most effective approach for predicting attrition.
+The goal is to compare classical and advanced models and evaluate their effectiveness in predicting employee attrition using structured tabular data.
 
 # Dataset Description
 
-Each row in the dataset represents an employee, and the target variable is:
+The dataset used in this project is the HR Capstone Dataset, where each row represents an employee and the target variable indicates whether the employee left the company.
 
-left → 1 if the employee left the company, 0 otherwise
+Target Variable
 
-Key features include:
+left
+
+1 → Employee left the company
+
+0 → Employee stayed
+
+Key Features
 
 satisfaction_level
 
@@ -21,71 +27,122 @@ number_project
 
 average_monthly_hours
 
-time_spent_company
+time_spent_company (employee tenure)
 
 work_accident
 
 promotion_last_5_years
 
-department (label encoded)
+department (categorical)
 
-salary (label encoded)
+salary (categorical)
 
-The dataset was cleaned prior to modeling, with consistent column naming, no missing values, and appropriate encoding of categorical variables.
+# Data Preprocessing
 
-# Methodology
+The following preprocessing steps were performed before modeling:
 
-Train–Test Split:
+Data Loading:
 
-The data was split into training (80%) and testing (20%) sets.
+Dataset loaded from HR_capstone_dataset.csv.
 
-Stratified sampling was used to preserve class distribution.
+Initial Data Inspection
+
+Dataset structure examined using .info() and .describe().
+
+Column names reviewed for consistency.
+
+Column Name Standardization
+
+Corrected misspellings such as:
+
+average_montly_hours → average_monthly_hours
+
+time_spend_company → time_spent_company
+
+promotion_last_5years → promotion_last_5_years
+
+Duplicate Handling:
+
+Duplicate rows were identified and removed to ensure data integrity.
+
+Outlier Analysis:
+
+A boxplot was used to visualize employee tenure.
+
+The IQR method was applied to detect outliers in time_spent_company.
+
+Categorical Encoding
+
+Label Encoding was applied to:
+
+department
+
+salary
 
 Feature Scaling:
 
-Standardization was applied for Logistic Regression and Neural Network models.
+Standardization was applied where required (Logistic Regression and Neural Network).
 
-Models Implemented:
+# Modeling Approach
 
-Logistic Regression (baseline, interpretable model)
+The dataset was split into:
 
-Decision Tree Classifier
+Training set: 80%
 
-Random Forest Classifier
+Testing set: 20%
+(Stratified sampling was used to preserve class distribution.)
 
-Neural Network (Multi-Layer Perceptron)
+The following models were implemented:
 
-Evaluation Metrics:
+_Logistic Regression_
 
-Accuracy
+Baseline, interpretable model
 
-Precision
+_Decision Tree Classifier_
 
-Recall
+Captures non-linear decision boundaries
 
-F1-score
+_Random Forest Classifier_
 
-# Results
-#Model	Accuracy
+Ensemble model for improved generalization
+
+_Neural Network (MLP)_
+
+Multi-layer perceptron with hidden layers
+
+# Results and Performance
+Model	Accuracy
 Logistic Regression	83.66%
 Decision Tree	96.99%
 Random Forest	98.67%
-Neural Network	97.96%
-Key Observations
+Neural Network (MLP)	97.96%
+Detailed Observations
 
-Logistic Regression struggled to correctly identify employees who left, indicating difficulty handling non-linear relationships.
+Logistic Regression struggled to correctly identify employees who left, showing low recall for the minority class.
 
-Decision Tree significantly improved performance by capturing feature interactions.
+Decision Tree significantly improved performance by learning non-linear relationships.
 
-Random Forest achieved the best overall performance, demonstrating strong generalization and robustness.
+Random Forest achieved the best overall results, offering high precision and recall for both classes.
 
-Neural Network also performed exceptionally well, slightly below Random Forest.
+Neural Network performed competitively, slightly below Random Forest, and demonstrated strong predictive capability when features were scaled.
 
 # Conclusion
 
-Tree-based ensemble methods, particularly Random Forest, proved most effective for predicting employee attrition in this dataset. While Logistic Regression provided interpretability, its predictive power was limited. Neural Networks offered strong performance but required careful scaling and tuning.
+The results clearly indicate that tree-based ensemble methods, particularly Random Forest, are highly effective for employee attrition prediction on structured HR data. While Logistic Regression provides interpretability, it is limited in handling complex patterns. Neural Networks offer strong performance but require careful preprocessing and tuning.
 
-This project demonstrates how machine learning can be effectively applied to HR analytics to support data-driven decision-making.
+This project highlights how machine learning can support data-driven HR decision-making by identifying employees at risk of leaving.
+
+# Future Improvements
+
+Hyperparameter tuning using GridSearchCV
+
+ROC–AUC and precision–recall curve analysis
+
+Feature importance and SHAP-based explainability
+
+Handling class imbalance using resampling techniques
+
+Cross-validation for more robust evaluation
 
 # Technologies Used
 
@@ -98,6 +155,7 @@ Scikit-learn
 Matplotlib
 
 # Author
+
 Mahmood Ali Khan
 Master’s in Artificial Intelligence
 Machine Learning & Data Analytics Enthusiast
